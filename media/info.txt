@@ -1,0 +1,1 @@
+this file contains all the media elements such as logo,photos,videos and audio
