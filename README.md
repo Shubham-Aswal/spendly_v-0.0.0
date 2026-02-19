@@ -87,6 +87,9 @@ These functions are designed to be modular and reusable. Frontend developers can
 
 If you need code examples for integrating with the UI, updating the functions, or fixing potential bugs (like the "including today" issue in `remDays()`), let me know!
 
+### 6. `About Database`
+"Backend & Persistence: Spendly is powered by Firebase to handle the heavy lifting of data management. We utilize Firebase Auth for student sign-ins and Firestore to store the inputs for our remMoney and dailySafespend functions. This cloud layer ensures that users don't lose their data on page refresh and provides the infrastructure needed to scale Spendly from a simple JavaScript utility to a full-featured progressive web app."
+
 
 ####
 
