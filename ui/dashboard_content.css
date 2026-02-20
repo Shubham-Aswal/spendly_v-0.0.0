@@ -1,0 +1,213 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+  /* Colors */
+  --body-color: #e4e9f7;
+  --sidebar-color: #fff;
+  --primary-color: #695cfe;
+  --primary-color-light: #f6f5ff;
+  --toggle-color: #ddd;
+  --text-color: #707070;
+  --line-color: #333;
+  --card-bg: #fff;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  /* Transition  */
+  --tran-03: all 0.2s ease;
+  --tran-04: all 0.4s ease;
+  --tran-05: all 0.5s ease;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Poppins", sans-serif;
+    background: var(--body-color);
+}
+
+/* Main container */
+.main {
+    padding: 30px 35px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Balance display card */
+#balance_d {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px var(--card-shadow);
+    flex: 1;
+    transition: var(--tran-03);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#balance_d:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--card-shadow);
+}
+
+#balance_d .icon {
+    font-size: 48px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+#balance_d h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+#balance-amount {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* Daily safe spend display card */
+#dailySafespend_d {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px var(--card-shadow);
+    flex: 1;
+    transition: var(--tran-03);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#dailySafespend_d h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+#dailySafespend_d .icon {
+    font-size: 48px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+#safe-spend-amount {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+#dailySafespend_d:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--card-shadow);
+}
+
+#dailySafespend_d:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--card-shadow);
+}
+
+#dailySafespend_d:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--card-shadow);
+}
+
+/* Goals section */
+.goals_d {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px var(--card-shadow);
+    transition: var(--tran-03);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.goals_d:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--card-shadow);
+}
+
+.goals_d h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.goals_d p {
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+/* Daily activity section */
+.daily-activity_d {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px var(--card-shadow);
+    transition: var(--tran-03);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.daily-activity_d:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--card-shadow);
+}
+
+.daily-activity_d h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.daily-activity_d p {
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+/* Dark mode support */
+body.dark-mode {
+    --body-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #d0d0d0;
+    --card-shadow: rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode #balance_d,
+body.dark-mode #dailySafespend_d,
+body.dark-mode .goals_d,
+body.dark-mode .daily-activity_d {
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+
