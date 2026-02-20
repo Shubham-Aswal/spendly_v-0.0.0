@@ -1,11 +1,205 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Nikhil Madarchod</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spendly</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style_dashboard.css" />
+
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <nav class="sidebar">
+      <!-- HAMBURGER BUTTON & Name -->
+      <header>
+        <div class="sidebar-dashboard-btn">
+          <div class="sidebar-btn">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <span class="dashboard-text">
+            <span class="name">SPENDLY</span>
+          </span>
+        </div>
+      </header>
+      <!-- Menu links -->
+      <div class="menu-bar">
+        <ul class="menu-links">
+          <li class="search-box">
+            <i class="bx bx-search icon"></i>
+            <input type="search" placeholder="Search..." />
+          </li>
+
+          <h3 class="menu-links-heading">MENU</h3>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class="bx bx-home-alt icon"></i>
+              <span class="text nav-text">Dashboard</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class="bx bx-wallet icon"></i>
+              <span class="text nav-text">Transactions</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class="bx bx-credit-card icon"></i>
+              <span class="text nav-text">Loans & Debts</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class="bx bx-target-lock icon"></i>
+              <span class="text nav-text">Goals</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class="bx bx-bar-chart-alt-2 icon"></i>
+              <span class="text nav-text">Analytics</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class="bx bx-cog icon"></i>
+              <span class="text nav-text">Settings</span>
+            </a>
+          </li>
+
+          <h3 class="menu-links-heading">COMMUNITY</h3>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class="bx bx-group icon"></i>
+              <span class="text nav-text">Squad Groups</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class="bx bx-user-circle icon"></i>
+              <span class="text nav-text">The Crew</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="bottom-content">
+          <li class="nav-link profile">
+            <a href="#">
+              <i class="bx bx-user-circle icon"></i>
+              <span class="text nav-text">Profile</span>
+            </a>
+          </li>
+
+          <li class="mode">
+            <div class="left">
+              <i class="bx bx-moon icon"></i>
+              <span class="mode-text text">Dark Mode</span>
+            </div>
+
+            <label class="toggle-switch">
+              <input type="checkbox" />
+              <span class="switch"></span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- second Navbar -->
+    <header class="top-navbar">
+      <!-- LEFT SIDE -->
+      <a
+        href="/spendly_v-0.0.0/ui/dashboard.html"
+        class="top-left-link"
+        target="_self"
+      >
+        <div class="top-left">
+          <div class="logo">
+            <i class="bx bx-wallet"></i>
+          </div>
+          <div class="company-info">
+            <span class="date">FEB 18</span>
+            <span class="company-name">Spendly</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- RIGHT SIDE -->
+      <div class="top-right">
+        <button class="notification-btn">
+          <i class="bx bx-bell"></i>
+        </button>
+
+        <button class="expense-btn">
+          <i class="bx bx-plus"></i>
+          Expense
+        </button>
+      </div>
+    </header>
+    <main class="main-content">
+      <iframe
+        src="/spendly_v-0.0.0/ui/dashboard_content.html"
+        class="content-frame"
+        frameborder="0"
+      >
+      </iframe>
+    </main>
+    <script>
+      /*DARK MODE FUNCTIONALITY*/
+
+      const darkToggle = document.querySelector(".toggle-switch input");
+      const body = document.body;
+
+      darkToggle.addEventListener("change", () => {
+        body.classList.toggle("dark-mode");
+      });
+
+      /*SIDEBAR ACTIVE LINK*/
+
+      const navLinks = document.querySelectorAll(".menu-links .nav-link");
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", function () {
+          navLinks.forEach((l) => l.classList.remove("active"));
+          this.classList.add("active");
+        });
+      });
+
+      /*AUTO DATE DISPLAY*/
+
+      const dateElement = document.querySelector(".date");
+
+      const today = new Date();
+      const options = { month: "short", day: "numeric" };
+      dateElement.textContent = today
+        .toLocaleDateString("en-US", options)
+        .toUpperCase();
+
+      /* =========================
+   SIDEBAR COLLAPSE
+========================= */
+
+      const sidebar = document.querySelector(".sidebar");
+      const hamburger = document.querySelector(".sidebar-btn");
+
+      hamburger.addEventListener("click", () => {
+        sidebar.classList.toggle("collapsed");
+      });
+    </script>
+  </body>
 </html>
