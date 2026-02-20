@@ -1,25 +1,45 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-      }
 
-      .box {
-        background-color:  #e2e2e2;
-        height: 100%;
-        width: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="box"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./dashboard_content.css">
+  <!-- Boxicons -->
+  <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+  <div class="main">
+    <div id="balance_d">
+      <i class="bx bx-wallet icon"></i>
+      <h2>Current Balance</h2>
+      <p id="balance-amount">---</p>
+    </div>
+
+    <div id="dailySafespend_d">
+      <i class="bx bx-money icon"></i>
+      <h2>Daily Safe Spend</h2>
+      <p id="safe-spend-amount">---</p>
+    </div>
+
+    <div class="goals_d">
+      <h2>Goals</h2>
+      <p>Track your savings goals here.(coming soom)</p>
+    </div>
+
+    <div class="daily-activity_d">
+      <h2>Daily Activity</h2>
+      <p>View your daily spending activity.(coming soon)</p>
+    </div>
+  </div>
+
+  </div>
+
+
+
+<script src="./ui-js/dashboard_contents.js"></script>
+</body>
+
 </html>
