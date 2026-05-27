@@ -7,6 +7,7 @@ const expenseRoutes = require('./routes/expenseRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
 const loanRoutes = require('./routes/loanRoutes');
+const budgetTrackerRoutes = require('./routes/budgetTrackerRoutes');
 
 const app = express();
 app.use(cors());
@@ -17,6 +18,7 @@ app.use('/api/expenses', expenseRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/loans', loanRoutes);
+app.use('/api/budget-tracker', budgetTrackerRoutes);
 
 app.get('/', (req, res) => {
     res.json({ message: 'Spendly Auth API is running.' });
