@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const ExpenseSetting = require('../models/ExpenseSetting');
+const BudgetTracker = require('../models/BudgetTracker');
 
 const getCurrentMonthKey = () => {
     const now = new Date();
@@ -12,6 +13,23 @@ const ensureBudgetCredit = (expenseSetting) => {
     if (expenseSetting.budgetCreditMonth !== currentMonth) {
         expenseSetting.budgetCreditUsed = false;
         expenseSetting.budgetCreditMonth = currentMonth;
+    }
+};
+
+const updateUserCurrentBalance = async (userId) => {
+    try {
+        const currentMonth = getCurrentMonthKey();
+        const tracker = await BudgetTracker.getOrCreateForUser(userId, currentMonth);
+        await tracker.syncWithExpenseSettings();
+        await tracker.updateTransactionTotal();
+
+        const user = await User.findById(userId);
+        if (user) {
+            user.currentBalance = tracker.currentBalance;
+            await user.save();
+        }
+    } catch (error) {
+        console.error('Error updating user current balance:', error);
     }
 };
 
@@ -72,6 +90,10 @@ exports.updateMonthlyBudget = async (req, res) => {
         }
 
         await expenseSetting.save();
+
+        // Sync budget tracker and update the user's current balance
+        await updateUserCurrentBalance(userId);
+
         return res.status(200).json({ message: 'Monthly budget updated successfully.', data: expenseSetting });
     } catch (error) {
         return res.status(500).json({ message: 'Budget update failed.' });
@@ -98,6 +120,9 @@ exports.addFixedExpense = async (req, res) => {
 
         expenseSetting.fixedExpenses.push({ type, amount });
         await expenseSetting.save();
+
+        // Sync budget tracker and update the user's current balance
+        await updateUserCurrentBalance(userId);
 
         return res.status(200).json({ message: 'Fixed expense added successfully.', data: expenseSetting });
     } catch (error) {
@@ -129,8 +154,42 @@ exports.updateFixedExpense = async (req, res) => {
         fixedExpense.amount = amount;
         await expenseSetting.save();
 
+        // Sync budget tracker and update the user's current balance
+        await updateUserCurrentBalance(userId);
+
         return res.status(200).json({ message: 'Fixed expense updated successfully.', data: expenseSetting });
     } catch (error) {
         return res.status(500).json({ message: 'Could not update fixed expense.' });
+    }
+};
+
+exports.deleteFixedExpense = async (req, res) => {
+    try {
+        const userId = req.user?.id;
+        const { expenseId } = req.params;
+
+        if (!userId || !expenseId) {
+            return res.status(400).json({ message: 'Expense ID is required.' });
+        }
+
+        const expenseSetting = await ExpenseSetting.findOne({ user: userId });
+        if (!expenseSetting) {
+            return res.status(404).json({ message: 'Expense settings not found for this user.' });
+        }
+
+        const fixedExpense = expenseSetting.fixedExpenses.id(expenseId);
+        if (!fixedExpense) {
+            return res.status(404).json({ message: 'Fixed expense not found.' });
+        }
+
+        expenseSetting.fixedExpenses.pull(expenseId);
+        await expenseSetting.save();
+
+        // Sync budget tracker and update the user's current balance
+        await updateUserCurrentBalance(userId);
+
+        return res.status(200).json({ message: 'Fixed expense deleted successfully.', data: expenseSetting });
+    } catch (error) {
+        return res.status(500).json({ message: 'Could not delete fixed expense.' });
     }
 };

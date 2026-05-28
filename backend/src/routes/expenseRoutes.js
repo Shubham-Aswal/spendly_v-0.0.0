@@ -9,5 +9,6 @@ router.get('/', expenseController.getExpenseSettings);
 router.post('/budget', expenseController.updateMonthlyBudget);
 router.post('/fixed', expenseController.addFixedExpense);
 router.put('/fixed/:expenseId', expenseController.updateFixedExpense);
+router.delete('/fixed/:expenseId', expenseController.deleteFixedExpense);
 
 module.exports = router;

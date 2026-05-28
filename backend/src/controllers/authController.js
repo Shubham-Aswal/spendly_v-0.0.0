@@ -56,7 +56,8 @@ exports.signUp = async (req, res) => {
                 id: newUser._id,
                 name: newUser.name,
                 email: newUser.email,
-                phone: newUser.phone
+                phone: newUser.phone,
+                currentBalance: newUser.currentBalance
             }
         });
     } catch (error) {
@@ -90,7 +91,8 @@ exports.signIn = async (req, res) => {
                 id: user._id,
                 name: user.name,
                 email: user.email,
-                phone: user.phone
+                phone: user.phone,
+                currentBalance: user.currentBalance
             }
         });
     } catch (error) {
