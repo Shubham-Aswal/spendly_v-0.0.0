@@ -7,7 +7,7 @@ const navItems = [
   { label: 'Transactions', path: '/transactions' },
   { label: 'Loans', path: '/dashboard', disabled: true },
   { label: 'Goals', path: '/dashboard', disabled: true },
-  { label: 'Analytics', path: '/dashboard', disabled: true },
+  { label: 'Analytics', path: '/analytics', disabled: false },
   { label: 'Settings', path: '/dashboard', disabled: true },
 ];
 

@@ -1,13 +1,17 @@
 :root {
   color-scheme: light;
   font-family: Inter, Arial, sans-serif;
-  background: #f8fafc;
+  background: linear-gradient(180deg, #f5fbfb 0%, #eef7fc 100%);
   color: #0f172a;
+}
+
+body {
+  background: linear-gradient(180deg, #f5fbfb 0%, #eef7fc 100%);
 }
 
 .app-shell {
   min-height: 100vh;
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  background: linear-gradient(180deg, #f5fbfb 0%, #eef7fc 100%);
 }
 
 .page-layout {
@@ -597,7 +601,7 @@
 
 .dashboard-cards {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 18px;
   margin-top: 28px;
 }
@@ -607,27 +611,29 @@
 }
 
 .action-card {
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 28px;
   padding: 28px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 24px;
   box-shadow: 0 22px 48px rgba(15, 23, 42, 0.08);
 }
 
 .action-card h3 {
   margin: 0 0 10px;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  color: #0f172a;
+  line-height: 1.25;
 }
 
 .action-card p {
   margin: 0;
   color: #475569;
   max-width: 42rem;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .action-buttons {
@@ -640,25 +646,32 @@
   border: none;
   border-radius: 16px;
   padding: 14px 22px;
-  background: #2563eb;
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
   color: white;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .action-btn:hover {
   transform: translateY(-2px);
-  background: #1d4ed8;
+  filter: brightness(1.05);
+}
+
+.action-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .action-btn.secondary {
-  background: #e2e8f0;
-  color: #0f172a;
+  background: #e0f2fe;
+  color: #075985;
 }
 
 .action-btn.secondary:hover {
-  background: #cbd5e1;
+  background: #bae6fd;
 }
 
 @media (max-width: 900px) {
@@ -685,19 +698,21 @@
 .card h2 {
   margin: 0 0 16px;
   font-size: 1rem;
-  color: #475569;
+  color: #0f172a;
+  font-weight: 700;
 }
 
 .card.card-highlight {
   position: relative;
   overflow: hidden;
+  background: linear-gradient(180deg, #ecfeff 0%, #ffffff 100%);
 }
 
 .card.card-highlight::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 40%);
+  background: radial-gradient(circle at top left, rgba(20, 184, 166, 0.14), transparent 40%);
   pointer-events: none;
 }
 
@@ -708,16 +723,17 @@
   bottom: -16px;
   width: 180px;
   height: 180px;
-  background: rgba(37, 99, 235, 0.08);
+  background: rgba(20, 184, 166, 0.12);
   border-radius: 50%;
   pointer-events: none;
 }
 
 .card p {
   margin: 0;
-  font-size: 1.95rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #0f172a;
+  line-height: 1.1;
 }
 
 .chip {
@@ -726,8 +742,8 @@
   padding: 8px 12px;
   border-radius: 999px;
   font-size: 0.85rem;
-  background: rgba(37, 99, 235, 0.08);
-  color: #2563eb;
+  background: rgba(20, 184, 166, 0.12);
+  color: #0f766e;
 }
 
 .section-title {
@@ -739,6 +755,27 @@
 .list-group {
   display: grid;
   gap: 16px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 22px;
+  background: #f8fbfa;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 18px;
+}
+
+.list-item strong {
+  display: block;
+  color: #0f172a;
+}
+
+.list-item small {
+  color: #64748b;
+  display: block;
 }
 
 .drawer-backdrop {
@@ -840,27 +877,10 @@
   width: 100%;
 }
 
-.list-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 20px;
-  background: #f8fafc;
-  border-radius: 18px;
-}
-
-.list-item strong {
-  color: #0f172a;
-}
-
-.list-item small {
-  color: #64748b;
-}
-
 .fixed-expense-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: baseline;
   gap: 18px;
   flex-wrap: wrap;
 }
@@ -885,13 +905,13 @@
   gap: 16px;
   padding: 18px 20px;
   border-radius: 20px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: #f8fbfa;
+  border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .fixed-item strong {
   display: block;
-  font-size: 1rem;
+  font-size: 1.05rem;
 }
 
 .fixed-item small {
@@ -908,7 +928,7 @@
 
 .fixed-amount {
   font-weight: 700;
-  color: #0f172a;
+  color: #0f766e;
   min-width: 100px;
   text-align: right;
 }
